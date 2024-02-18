@@ -5,9 +5,11 @@
     align-items: center;
   }
 
-  &__avatar {
-    width: 24px;
+  &__avatar.MuiAvatar-circular {
     height: 24px;
+    width: 24px;
     margin-right: 0.5rem;
+    font-size: 1rem;
+    background-color: #45caa5;
   }
 }

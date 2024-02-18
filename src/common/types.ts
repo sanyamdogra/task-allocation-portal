@@ -4,4 +4,5 @@ export interface Task {
   status: string;
   assignee: string;
   amount: number;
+  id: number;
 }

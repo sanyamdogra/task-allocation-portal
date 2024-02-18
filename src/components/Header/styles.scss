@@ -5,12 +5,19 @@
   background-color: #000;
   height: 50px;
   color: white;
+  justify-content: space-between;
 
   &__logo {
-    margin:0 1rem;
+    margin: 0 1rem;
   }
 
   &__heading {
-    color: #45CAA5;
+    color: #45caa5;
+  }
+
+  &__left-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }

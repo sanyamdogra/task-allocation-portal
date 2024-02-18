@@ -4,6 +4,7 @@ import { IconButton } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
 import { useAuth } from '@hooks/useAuth';
+import ProfileActions from '@components/ProfileActions';
 
 import './styles.scss';
 
@@ -18,20 +19,28 @@ const Header: React.FC<Props> = ({ handleDrawerOpen }) => {
 
   return (
     <header className={rootClassName}>
-      {authenticated && (
-        <IconButton
-          color='inherit'
-          aria-label='open drawer'
-          onClick={handleDrawerOpen}
-        >
-          <Menu />
-        </IconButton>
-      )}
+      <div className={`${rootClassName}__left-side`}>
+        {authenticated && (
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            onClick={handleDrawerOpen}
+          >
+            <Menu />
+          </IconButton>
+        )}
 
-      <div className={`${rootClassName}__logo`}>Logo</div>
-      <div>
-        Spotzer <span className={`${rootClassName}__heading`}>Network</span>
+        <div className={`${rootClassName}__logo`}>Logo</div>
+        <div>
+          Spotzer <span className={`${rootClassName}__heading`}>Network</span>
+        </div>
       </div>
+
+      {authenticated && (
+        <div className={`${rootClassName}__right-side`}>
+          <ProfileActions />
+        </div>
+      )}
     </header>
   );
 };

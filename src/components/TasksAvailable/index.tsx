@@ -10,9 +10,11 @@ import {
   TableRow
 } from '@mui/material';
 
-import { HISTORIC_TASKS } from '../../common/constants';
+import { useTasks } from '@hooks/useTasks';
 
 const TasksAvailable: React.FC = () => {
+  const { availableTasks, moveToInProgressTasks } = useTasks();
+
   return (
     <div>
       <TableContainer component={Paper} variant='outlined'>
@@ -34,7 +36,7 @@ const TasksAvailable: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {HISTORIC_TASKS.map((task) => {
+            {availableTasks.map((task) => {
               return (
                 <TableRow>
                   <TableCell>{task.name}</TableCell>
@@ -44,7 +46,7 @@ const TasksAvailable: React.FC = () => {
                     <Button
                       size='small'
                       variant='outlined'
-                      // onClick={() => handlePredictButton(image.imageURI)}
+                      onClick={() => moveToInProgressTasks(task)}
                     >
                       Assign
                     </Button>

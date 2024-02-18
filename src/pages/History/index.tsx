@@ -50,11 +50,13 @@ const History: React.FC = () => {
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
                     <TableCell>{task.status}</TableCell>
-                    <TableCell className={`${rootClassName}__assignee`}>
-                      <Avatar className={`${rootClassName}__avatar`}>
-                        {task.assignee.charAt(0)}
-                      </Avatar>
-                      {task.assignee}
+                    <TableCell>
+                      <div className={`${rootClassName}__assignee`}>
+                        <Avatar className={`${rootClassName}__avatar`}>
+                          {task.assignee.charAt(0)}
+                        </Avatar>
+                        <div>{task.assignee}</div>
+                      </div>
                     </TableCell>
                   </TableRow>
                 );
