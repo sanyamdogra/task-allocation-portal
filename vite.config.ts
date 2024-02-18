@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-
 import { resolve } from 'path';
+import react from '@vitejs/plugin-react';
 
 const root = resolve(__dirname, 'src');
 
@@ -13,7 +12,8 @@ export default defineConfig({
       '@components': resolve(root, 'components'),
       '@pages': resolve(root, 'pages'),
       '@hooks': resolve(root, 'hooks'),
-      '@contexts': resolve(root, 'contexts')
+      '@contexts': resolve(root, 'contexts'),
+      '@common': resolve(root, 'common')
     }
   }
 });

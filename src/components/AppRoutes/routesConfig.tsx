@@ -1,4 +1,5 @@
 import Home from '@pages/Home';
+import History from '@pages/History';
 
 export const ROUTES_CONFIG = [
   {
@@ -9,7 +10,7 @@ export const ROUTES_CONFIG = [
   {
     path: '/history',
     label: 'History',
-    component: <Home />
+    component: <History />
   },
   {
     path: '/invoice',
