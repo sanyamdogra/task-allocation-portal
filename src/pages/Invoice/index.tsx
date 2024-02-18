@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  Avatar,
   Box,
   Paper,
   Table,
@@ -11,18 +10,15 @@ import {
   TableHead,
   TableRow
 } from '@mui/material';
+import { FileDownload } from '@mui/icons-material';
 
 import Filters from '@components/Filters';
 import { HISTORIC_TASKS } from '@common/constants';
 
-import './styles.scss';
-
-const rootClassName = 'task-allocation-history-page';
-
-const History: React.FC = () => {
+const Invoice: React.FC = () => {
   return (
-    <div className={rootClassName}>
-      <h3>History</h3>
+    <div>
+      <h3>Invoice</h3>
       <Filters />
       <Box sx={{ p: 3 }}>
         <TableContainer component={Paper} variant='outlined'>
@@ -36,10 +32,10 @@ const History: React.FC = () => {
                   <h4>Description</h4>
                 </TableCell>
                 <TableCell>
-                  <h4>Status</h4>
+                  <h4>Amount</h4>
                 </TableCell>
                 <TableCell>
-                  <h4>Assignee</h4>
+                  <h4>Invoice</h4>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -49,12 +45,9 @@ const History: React.FC = () => {
                   <TableRow>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
-                    <TableCell>{task.status}</TableCell>
-                    <TableCell className={`${rootClassName}__assignee`}>
-                      <Avatar className={`${rootClassName}__avatar`}>
-                        {task.assignee.charAt(0)}
-                      </Avatar>
-                      {task.assignee}
+                    <TableCell>{task.amount}</TableCell>
+                    <TableCell>
+                      <FileDownload />
                     </TableCell>
                   </TableRow>
                 );
@@ -67,4 +60,4 @@ const History: React.FC = () => {
   );
 };
 
-export default History;
+export default Invoice;

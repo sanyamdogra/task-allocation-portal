@@ -1,5 +1,6 @@
 import Home from '@pages/Home';
 import History from '@pages/History';
+import Invoice from '@pages/Invoice';
 
 export const ROUTES_CONFIG = [
   {
@@ -15,6 +16,6 @@ export const ROUTES_CONFIG = [
   {
     path: '/invoice',
     label: 'Invoice',
-    component: <Home />
+    component: <Invoice />
   }
 ];

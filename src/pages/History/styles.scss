@@ -1,0 +1,13 @@
+.task-allocation-history-page {
+  &__assignee {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+}
