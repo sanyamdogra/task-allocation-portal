@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../Header';
-import SideNavbar from '../SideNavbar';
+import Header from '@components/Header';
+import SideNavbar from '@components/SideNavbar';
 
 interface Props {
   children: React.ReactNode;

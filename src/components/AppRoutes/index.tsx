@@ -1,11 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Login from '../../pages/Login';
+import Login from '@pages/Login';
 
-import ProtectedRoutes from '../ProtectedRoutes';
-
-import { ROUTES_CONFIG } from './routesConfig';
+import ProtectedRoutes from '@components/ProtectedRoutes';
+import { ROUTES_CONFIG } from '@components/AppRoutes/routesConfig';
 
 const AppRoutes: React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 
 import './styles.scss';
 

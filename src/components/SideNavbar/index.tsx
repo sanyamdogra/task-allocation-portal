@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { ChevronLeft, Inbox, Mail } from '@mui/icons-material';
 
-import { ROUTES_CONFIG } from '../AppRoutes/routesConfig';
+import { ROUTES_CONFIG } from '@components/AppRoutes/routesConfig';
 
 type Props = {
   open: boolean;
