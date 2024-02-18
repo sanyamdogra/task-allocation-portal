@@ -1,0 +1,16 @@
+.spotzer-network-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #000;
+  height: 50px;
+  color: white;
+
+  &__logo {
+    margin:0 1rem;
+  }
+
+  &__heading {
+    color: #45CAA5;
+  }
+}
