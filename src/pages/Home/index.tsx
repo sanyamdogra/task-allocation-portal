@@ -12,10 +12,7 @@ const rootClassName = 'task-allocation-home';
 const Home: React.FC = () => {
   const [tabValue, setTabValue] = React.useState(0);
 
-  const handleTabChange = (
-    event: React.SyntheticEvent,
-    newTabValue: number
-  ) => {
+  const handleTabChange = (_: React.SyntheticEvent, newTabValue: number) => {
     setTabValue(newTabValue);
   };
 
