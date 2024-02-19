@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { ChevronLeft, Inbox, Mail } from '@mui/icons-material';
 
+import { useAuth } from '@hooks/useAuth';
 import { ROUTES_CONFIG } from '@components/AppRoutes/routesConfig';
 
 type Props = {
@@ -24,6 +25,7 @@ const drawerWidth = 240;
 
 const SideNavbar: React.FC<Props> = ({ open, handleDrawerClose }) => {
   const navigate = useNavigate();
+  const { authenticated } = useAuth();
 
   const handleClick = (slug: string) => {
     handleDrawerClose();
@@ -43,7 +45,7 @@ const SideNavbar: React.FC<Props> = ({ open, handleDrawerClose }) => {
         }}
         variant='persistent'
         anchor='left'
-        open={open}
+        open={open && authenticated}
       >
         <div>
           <IconButton onClick={handleDrawerClose}>

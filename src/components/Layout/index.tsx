@@ -26,7 +26,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className={rootClassName}>
       <Header handleDrawerOpen={handleDrawerOpen} />
       <SideNavbar open={open} handleDrawerClose={handleDrawerClose} />
-      <div>{children}</div>
+      {children}
     </div>
   );
 };

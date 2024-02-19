@@ -1,4 +1,4 @@
-.spotzer-network-header {
+.task-allocation-header {
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -12,7 +12,14 @@
   }
 
   &__heading {
-    color: #45caa5;
+    font-weight: 800;
+    margin: 1rem;
+
+    &--secondary {
+      color: #45caa5;
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
   }
 
   &__left-side {

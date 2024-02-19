@@ -1,0 +1,42 @@
+.task-allocation-login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+
+  &__card {
+    max-width: 320px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: left;
+  }
+
+  &__heading {
+    font-weight: 800;
+    font-size: 2rem;
+
+    &--primary {
+      color: #45caa5;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__logInButton.MuiButton-root {
+    background-color: black;
+
+    &:hover {
+      background-color: rgba(1, 1, 1, 0.8);
+    }
+  }
+
+  &__signUp {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: #45caa5;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

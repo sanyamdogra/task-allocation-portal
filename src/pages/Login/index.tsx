@@ -4,6 +4,10 @@ import { Button, Grid, TextField } from '@mui/material';
 
 import { useAuth } from '@hooks/useAuth';
 
+import './styles.scss';
+
+const rootClassName = 'task-allocation-login-page';
+
 const Login: React.FC = () => {
   const { logIn } = useAuth();
   const navigate = useNavigate();
@@ -23,43 +27,60 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          justifyContent={'center'}
-          alignItems={'center'}
-          spacing={1}
+    <div className={rootClassName}>
+      <div className={`${rootClassName}__card`}>
+        <div className={`${rootClassName}__heading`}>Welcome to</div>
+        <div
+          className={`${rootClassName}__heading ${rootClassName}__heading--primary`}
         >
-          <Grid item xs={12}>
-            <TextField
-              placeholder='Enter username'
-              size='small'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              // fullWidth
-              required
-            />
+          Spotzer Network
+        </div>
+        <form onSubmit={handleSubmit}>
+          <Grid
+            container
+            justifyContent={'center'}
+            alignItems={'center'}
+            spacing={3}
+          >
+            <Grid item xs={12}>
+              <TextField
+                placeholder='Enter username'
+                size='small'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                fullWidth
+                required
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                size='small'
+                placeholder='Enter password'
+                value={password}
+                type='password'
+                onChange={(e) => setPassword(e.target.value)}
+                fullWidth
+                required
+              />
+            </Grid>
+            {error && <p>{error}</p>}
+            <Grid item xs={12}>
+              <Button
+                type='submit'
+                color='primary'
+                variant='contained'
+                className={`${rootClassName}__logInButton`}
+                fullWidth
+              >
+                Log in
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              size='small'
-              placeholder='Enter password'
-              value={password}
-              type='password'
-              onChange={(e) => setPassword(e.target.value)}
-              // fullWidth
-              required
-            />
-          </Grid>
-          {error && <p>{error}</p>}
-          <Grid item xs={12}>
-            <Button type='submit' color='primary' variant='contained'>
-              Submit
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+          <div className={`${rootClassName}__signUp`}>
+            Not a member? Sign Up
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

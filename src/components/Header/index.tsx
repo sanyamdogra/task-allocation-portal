@@ -12,7 +12,7 @@ type Props = {
   handleDrawerOpen: VoidFunction;
 };
 
-const rootClassName = 'spotzer-network-header';
+const rootClassName = 'task-allocation-header';
 
 const Header: React.FC<Props> = ({ handleDrawerOpen }) => {
   const { authenticated } = useAuth();
@@ -30,9 +30,13 @@ const Header: React.FC<Props> = ({ handleDrawerOpen }) => {
           </IconButton>
         )}
 
-        <div className={`${rootClassName}__logo`}>Logo</div>
-        <div>
-          Spotzer <span className={`${rootClassName}__heading`}>Network</span>
+        <div className={`${rootClassName}__heading`}>
+          Spotzer
+          <span
+            className={`${rootClassName}__heading ${rootClassName}__heading--secondary`}
+          >
+            Network
+          </span>
         </div>
       </div>
 
