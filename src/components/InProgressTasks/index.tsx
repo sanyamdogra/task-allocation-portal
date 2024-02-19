@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -11,9 +10,10 @@ import {
 } from '@mui/material';
 
 import { useTasks } from '@hooks/useTasks';
+import TaskActions from '@components/TaskActions';
 
 const InProgressTasks: React.FC = () => {
-  const { inProgressTasks, moveToAvailableTasks } = useTasks();
+  const { inProgressTasks } = useTasks();
 
   return (
     <div>
@@ -43,13 +43,14 @@ const InProgressTasks: React.FC = () => {
                   <TableCell>{task.description}</TableCell>
                   <TableCell>{task.status}</TableCell>
                   <TableCell>
-                    <Button
+                    {/* <Button
                       size='small'
                       variant='outlined'
                       onClick={() => moveToAvailableTasks(task)}
                     >
                       Un-assign
-                    </Button>
+                    </Button> */}
+                    <TaskActions task={task} />
                   </TableCell>
                 </TableRow>
               );

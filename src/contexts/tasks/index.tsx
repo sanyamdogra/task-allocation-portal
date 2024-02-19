@@ -6,15 +6,19 @@ import { HISTORIC_TASKS } from '@common/constants';
 export interface TasksContextValue {
   availableTasks: Task[];
   inProgressTasks: Task[];
+  completedTasks: Task[];
   moveToInProgressTasks: (task: Task) => void;
   moveToAvailableTasks: (task: Task) => void;
+  moveToCompletedTasks: (task: Task) => void;
 }
 
 export const TasksContext = createContext<TasksContextValue>({
   availableTasks: [],
   inProgressTasks: [],
+  completedTasks: [],
   moveToInProgressTasks: () => {},
-  moveToAvailableTasks: () => {}
+  moveToAvailableTasks: () => {},
+  moveToCompletedTasks: () => {}
 });
 
 export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -22,6 +26,7 @@ export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [availableTasks, setAvailableTasks] = useState(HISTORIC_TASKS);
   const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const moveToInProgressTasks = useCallback(
     (task: Task) => {
@@ -59,18 +64,40 @@ export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({
     [inProgressTasks]
   );
 
+  const moveToCompletedTasks = useCallback(
+    (task: Task) => {
+      const updatedTask: Task = { ...task, status: 'Done' };
+
+      setCompletedTasks((oldAvailableTasks) => [
+        ...oldAvailableTasks,
+        updatedTask
+      ]);
+
+      const updatedInProgressTasks = [...inProgressTasks].filter(
+        (inProgressTask) => inProgressTask.id !== task.id
+      );
+
+      setInProgressTasks(updatedInProgressTasks);
+    },
+    [inProgressTasks]
+  );
+
   const values = useMemo<TasksContextValue>(
     () => ({
       availableTasks,
       inProgressTasks,
+      completedTasks,
       moveToInProgressTasks,
-      moveToAvailableTasks
+      moveToAvailableTasks,
+      moveToCompletedTasks
     }),
     [
       availableTasks,
       inProgressTasks,
+      completedTasks,
       moveToAvailableTasks,
-      moveToInProgressTasks
+      moveToInProgressTasks,
+      moveToCompletedTasks
     ]
   );
 
