@@ -1,6 +1,14 @@
+@import '@styles/variables/colors';
+
 .task-allocation-home {
   &__tab.Mui-selected.MuiTab-root {
-    color: #45caa5;
+    color: $primary-accent;
     font-weight: bold;
+  }
+
+  &__tabs {
+    .MuiTabs-indicator {
+      background-color: $primary-accent;
+    }
   }
 }

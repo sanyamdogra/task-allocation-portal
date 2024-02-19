@@ -11,10 +11,12 @@ import {
   ListItemIcon,
   ListItemText
 } from '@mui/material';
-import { ChevronLeft, Inbox, Mail } from '@mui/icons-material';
+import { ChevronLeft } from '@mui/icons-material';
 
 import { useAuth } from '@hooks/useAuth';
 import { ROUTES_CONFIG } from '@components/AppRoutes/routesConfig';
+
+import './styles.scss';
 
 type Props = {
   open: boolean;
@@ -22,6 +24,7 @@ type Props = {
 };
 
 const drawerWidth = 240;
+const rootClassName = 'task-allocation-sidebar';
 
 const SideNavbar: React.FC<Props> = ({ open, handleDrawerClose }) => {
   const navigate = useNavigate();
@@ -33,40 +36,41 @@ const SideNavbar: React.FC<Props> = ({ open, handleDrawerClose }) => {
   };
 
   return (
-    <div>
-      <Drawer
-        sx={{
+    <Drawer
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
           width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box'
-          }
-        }}
-        variant='persistent'
-        anchor='left'
-        open={open && authenticated}
+          boxSizing: 'border-box',
+          background: 'black',
+          color: 'white'
+        }
+      }}
+      variant='persistent'
+      anchor='left'
+      open={open && authenticated}
+    >
+      <IconButton
+        onClick={handleDrawerClose}
+        className={`${rootClassName}__iconTheme`}
       >
-        <div>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeft />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {ROUTES_CONFIG.map((route, index) => (
-            <ListItem key={route.path} disablePadding>
-              <ListItemButton onClick={() => handleClick(route.path)}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <Inbox /> : <Mail />}
-                </ListItemIcon>
-                <ListItemText primary={route.label} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </div>
+        <ChevronLeft />
+      </IconButton>
+      <Divider />
+      <List>
+        {ROUTES_CONFIG.map((route) => (
+          <ListItem key={route.path} disablePadding>
+            <ListItemButton onClick={() => handleClick(route.path)}>
+              <ListItemIcon className={`${rootClassName}__iconTheme`}>
+                {route.icon}
+              </ListItemIcon>
+              <ListItemText primary={route.label} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
   );
 };
 

@@ -1,3 +1,8 @@
+@import '@styles/variables/borders';
+@import '@styles/variables/spacing';
+@import '@styles/variables/fonts';
+@import '@styles/variables/colors';
+
 .task-allocation-login-page {
   display: flex;
   align-items: center;
@@ -6,20 +11,20 @@
 
   &__card {
     max-width: 320px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 1rem;
+    border: $border-width-normal solid rgba(0, 0, 0, 0.2);
+    border-radius: $border-radius-normal;
+    padding: $space-normal;
+    margin: $space-normal;
     text-align: left;
   }
 
   &__heading {
-    font-weight: 800;
-    font-size: 2rem;
+    font-weight: $boldest;
+    font-size: $font-xl;
 
     &--primary {
-      color: #45caa5;
-      margin-bottom: 2rem;
+      color: $primary-accent;
+      margin-bottom: $space-l;
     }
   }
 
@@ -32,10 +37,10 @@
   }
 
   &__signUp {
-    font-size: 0.8rem;
+    font-size: $font-xs;
     text-align: center;
-    margin-top: 1rem;
-    color: #45caa5;
+    margin-top: $space-normal;
+    color: $primary-accent;
     text-decoration: underline;
     cursor: pointer;
   }

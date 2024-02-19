@@ -1,6 +1,8 @@
+@import '@styles/variables/colors';
+
 .task-allocation-profile-actions {
   &__icon.MuiSvgIcon-root {
-    color: #45caa5;
+    color: $primary-accent;
     height: 32px;
     width: 32px;
   }

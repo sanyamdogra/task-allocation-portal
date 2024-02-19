@@ -34,7 +34,7 @@ const Invoice: React.FC = () => {
                 <TableCell>
                   <h4>Amount</h4>
                 </TableCell>
-                <TableCell>
+                <TableCell align='center'>
                   <h4>Invoice</h4>
                 </TableCell>
               </TableRow>
@@ -46,7 +46,7 @@ const Invoice: React.FC = () => {
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
                     <TableCell>{task.amount}</TableCell>
-                    <TableCell>
+                    <TableCell align='center'>
                       <FileDownload />
                     </TableCell>
                   </TableRow>

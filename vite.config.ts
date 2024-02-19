@@ -13,7 +13,8 @@ export default defineConfig({
       '@pages': resolve(root, 'pages'),
       '@hooks': resolve(root, 'hooks'),
       '@contexts': resolve(root, 'contexts'),
-      '@common': resolve(root, 'common')
+      '@common': resolve(root, 'common'),
+      '@styles': resolve(root, 'styles')
     }
   }
 });
