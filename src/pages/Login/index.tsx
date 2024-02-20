@@ -45,7 +45,6 @@ const Login: React.FC = () => {
             <Grid item xs={12}>
               <TextField
                 placeholder='Enter username'
-                data-testid='login-form-username-input'
                 size='small'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -57,7 +56,6 @@ const Login: React.FC = () => {
               <TextField
                 size='small'
                 placeholder='Enter password'
-                data-testid='login-form-password-input'
                 value={password}
                 type='password'
                 onChange={(e) => setPassword(e.target.value)}
