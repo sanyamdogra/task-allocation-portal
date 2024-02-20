@@ -43,13 +43,6 @@ const InProgressTasks: React.FC = () => {
                   <TableCell>{task.description}</TableCell>
                   <TableCell>{task.status}</TableCell>
                   <TableCell>
-                    {/* <Button
-                      size='small'
-                      variant='outlined'
-                      onClick={() => moveToAvailableTasks(task)}
-                    >
-                      Un-assign
-                    </Button> */}
                     <TaskActions task={task} />
                   </TableCell>
                 </TableRow>
