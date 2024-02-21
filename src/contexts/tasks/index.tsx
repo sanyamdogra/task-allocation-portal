@@ -25,7 +25,7 @@ export const TasksContext = createContext<TasksContextValue>({
 export const TasksProvider: React.FC<{ children: React.ReactNode }> = ({
   children
 }) => {
-  const [availableTasks, setAvailableTasks] = useState(AVAILABLE_TASKS);
+  const [availableTasks, setAvailableTasks] = useState<Task[]>(AVAILABLE_TASKS);
   const [inProgressTasks, setInProgressTasks] = useState<Task[]>([]);
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 

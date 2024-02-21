@@ -18,7 +18,12 @@ const TasksAvailable: React.FC = () => {
   const { availableTasks, moveToInProgressTasks } = useTasks();
 
   if (availableTasks.length === 0) {
-    return <EmptyState info='No tasks available!' />;
+    return (
+      <EmptyState
+        info='No tasks available!'
+        testId='task-available-empty-state'
+      />
+    );
   }
 
   return (
@@ -36,7 +41,7 @@ const TasksAvailable: React.FC = () => {
           </TableHead>
           <TableBody>
             {availableTasks.map((task) => (
-              <TableRow>
+              <TableRow key={task.id} data-testid={'available-tasks-table-row'}>
                 <TableCell>{task.name}</TableCell>
                 <TableCell>{task.description}</TableCell>
                 <TableCell>{task.status}</TableCell>

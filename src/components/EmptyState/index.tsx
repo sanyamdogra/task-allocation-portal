@@ -7,11 +7,12 @@ const rootClassName = 'task-allocation-empty-state';
 
 interface Props {
   info: string;
+  testId?: string;
 }
 
-const EmptyState: React.FC<Props> = ({ info }) => {
+const EmptyState: React.FC<Props> = ({ info, testId }) => {
   return (
-    <div className={rootClassName}>
+    <div className={rootClassName} data-testid={testId}>
       <SentimentVeryDissatisfied className={`${rootClassName}__icon`} />
       <div className={`${rootClassName}__info`}>{info}</div>
     </div>

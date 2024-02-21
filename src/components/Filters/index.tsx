@@ -35,6 +35,7 @@ const Filters: React.FC<Props> = ({
         <Select
           labelId='filter-select-month'
           id='select-month'
+          data-testid='select-month'
           label='Month'
           displayEmpty
           value={month}
@@ -69,6 +70,7 @@ const Filters: React.FC<Props> = ({
         size='small'
         onClick={clearFilters}
         className={`${rootClassName}__resetButton`}
+        data-testid='clear-filters'
       >
         Clear
       </Button>

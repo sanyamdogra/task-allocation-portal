@@ -57,7 +57,7 @@ const History: React.FC = () => {
             <TableBody>
               {historicTasks.map((task) => {
                 return (
-                  <TableRow>
+                  <TableRow key={task.id} data-testid='history-table-row'>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
                     <TableCell>
