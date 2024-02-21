@@ -1,0 +1,13 @@
+.task-allocation-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__resetButton.MuiButton-root {
+    background-color: black;
+
+    &:hover {
+      background-color: rgba(1, 1, 1, 0.8);
+    }
+  }
+}

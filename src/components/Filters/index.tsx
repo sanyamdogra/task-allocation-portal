@@ -1,11 +1,35 @@
 import React from 'react';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent
+} from '@mui/material';
 
 import { MONTHS, YEARS } from './constants';
+import './styles.scss';
 
-const Filters: React.FC = () => {
+const rootClassName = 'task-allocation-filter';
+
+interface Props {
+  month: string;
+  year: string;
+  handleMonthChange: (e: SelectChangeEvent<string>) => void;
+  handleYearChange: (e: SelectChangeEvent<string>) => void;
+  clearFilters: VoidFunction;
+}
+
+const Filters: React.FC<Props> = ({
+  month,
+  year,
+  handleMonthChange,
+  handleYearChange,
+  clearFilters
+}) => {
   return (
-    <div>
+    <div className={rootClassName}>
       <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
         <InputLabel id='filter-select-month'>Month</InputLabel>
         <Select
@@ -13,8 +37,8 @@ const Filters: React.FC = () => {
           id='select-month'
           label='Month'
           displayEmpty
-          // value={'date'}
-          // onChange={handleChange}
+          value={month}
+          onChange={handleMonthChange}
         >
           {MONTHS.map((month) => (
             <MenuItem value={month} key={month}>
@@ -30,8 +54,8 @@ const Filters: React.FC = () => {
           id='select-year'
           label='Year'
           displayEmpty
-          // value={'date'}
-          // onChange={handleChange}
+          value={year}
+          onChange={handleYearChange}
         >
           {YEARS.map((year) => (
             <MenuItem value={year} key={year}>
@@ -40,6 +64,14 @@ const Filters: React.FC = () => {
           ))}
         </Select>
       </FormControl>
+      <Button
+        variant='contained'
+        size='small'
+        onClick={clearFilters}
+        className={`${rootClassName}__resetButton`}
+      >
+        Clear
+      </Button>
     </div>
   );
 };

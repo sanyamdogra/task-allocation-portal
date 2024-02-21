@@ -76,8 +76,8 @@ const Login: React.FC = () => {
               </Button>
             </Grid>
           </Grid>
-          <div className={`${rootClassName}__signUp`}>
-            Not a member? Sign Up
+          <div className={`${rootClassName}__forgotPassword`}>
+            Forgot password? Click here
           </div>
         </form>
       </div>

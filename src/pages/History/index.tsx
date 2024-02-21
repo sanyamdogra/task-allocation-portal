@@ -13,42 +13,56 @@ import {
 } from '@mui/material';
 
 import Filters from '@components/Filters';
-import { HISTORIC_TASKS } from '@common/constants';
+import { useFilters } from '@hooks/useFilters';
+
+import { HISTORIC_TASKS } from './dummyData';
+import { TABLE_CONFIG } from './tableConfig';
 
 import './styles.scss';
 
 const rootClassName = 'task-allocation-history-page';
 
 const History: React.FC = () => {
+  const {
+    records: historicTasks,
+    filterMonth,
+    filterYear,
+    handleFilterYearChange,
+    handleFilterMonthChange,
+    clearFilters
+  } = useFilters(HISTORIC_TASKS);
+
   return (
     <div className={rootClassName}>
       <h3>History</h3>
-      <Filters />
+      <Filters
+        month={filterMonth}
+        year={filterYear}
+        handleMonthChange={handleFilterMonthChange}
+        handleYearChange={handleFilterYearChange}
+        clearFilters={clearFilters}
+      />
       <Box sx={{ p: 3 }}>
         <TableContainer component={Paper} variant='outlined'>
           <Table size='small'>
             <TableHead>
               <TableRow>
-                <TableCell>
-                  <h4>Task</h4>
-                </TableCell>
-                <TableCell>
-                  <h4>Description</h4>
-                </TableCell>
-                <TableCell>
-                  <h4>Status</h4>
-                </TableCell>
-                <TableCell>
-                  <h4>Assignee</h4>
-                </TableCell>
+                {TABLE_CONFIG.map(({ colName, id }) => (
+                  <TableCell key={id}>
+                    <h4>{colName}</h4>
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {HISTORIC_TASKS.map((task) => {
+              {historicTasks.map((task) => {
                 return (
                   <TableRow>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
+                    <TableCell>
+                      {task.month} {task.year}
+                    </TableCell>
                     <TableCell>{task.status}</TableCell>
                     <TableCell>
                       <div className={`${rootClassName}__assignee`}>

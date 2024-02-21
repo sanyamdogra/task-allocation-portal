@@ -1,0 +1,15 @@
+@import '@styles/variables/colors';
+@import '@styles/variables/fonts';
+
+.task-allocation-empty-state {
+  &__icon.MuiSvgIcon-root {
+    color: $primary-accent;
+    height: 100px;
+    width: 100px;
+  }
+
+  &__info {
+    font-weight: $semibold;
+    font-size: $font-m;
+  }
+}

@@ -1,6 +1,6 @@
 import { Task } from '@common/types';
 
-export const HISTORIC_TASKS: Task[] = [
+export const AVAILABLE_TASKS: Task[] = [
   {
     name: 'BXP-123',
     description: 'Color mismatch',

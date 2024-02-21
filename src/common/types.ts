@@ -5,4 +5,6 @@ export interface Task {
   assignee: string;
   amount: number;
   id: number;
+  month?: string;
+  year?: number;
 }
