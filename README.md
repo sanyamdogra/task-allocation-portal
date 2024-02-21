@@ -1,30 +1,66 @@
-# React + TypeScript + Vite
+# Task Allocation Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A portal to allocate tasks, and view historic tasks and invoices.
 
-Currently, two official plugins are available:
+## Deployment 🚀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://task-allocation-portal.vercel.app/
 
-## Expanding the ESLint configuration
+## Technologies Used ⚙️
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React + Vite + TS
+- React Context API
+- React Router
+- Material UI
+- SCSS + BEM
+- Vitest + React Testing Library
+- Vercel
 
-- Configure the top-level `parserOptions` property like this:
+## Steps to run 🪛
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+To run the project in development mode, install the correct node version:
+
+```
+nvm use
+```
+Install the dependencies using:
+
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To spin up the development server run:
+
+```
+npm run dev
+```
+
+For running the tests run:
+
+```
+npm run test
+```
+
+
+## Folder Structure ✨
+
+This project follows a flat folder structure.
+  
+```
+task-allocation-portal
+├── src
+│   ├── assets
+│   ├── common
+│   ├── components
+│   ├── contexts
+│   ├── hooks
+│   ├── pages
+│   │     ├── Home
+│   │     ├── History
+│   │     ├── Invoice
+│   │     └── Login           
+│   └── styles
+├── package.json
+└── tsconfig.json
+
+```
