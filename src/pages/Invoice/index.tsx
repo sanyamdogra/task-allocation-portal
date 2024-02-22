@@ -14,12 +14,11 @@ import { FileDownload } from '@mui/icons-material';
 
 import Filters from '@components/Filters';
 import EmptyState from '@components/EmptyState';
+import AmountEarned from '@components/AmountEarned';
 import { useFilters } from '@hooks/useFilters';
 
 import { TABLE_CONFIG } from './tableConfig';
 import { INVOICE_TASKS } from './dummyData';
-
-import './styles.scss';
 
 const rootClassName = 'task-allocation-invoice';
 
@@ -33,12 +32,6 @@ const Invoice: React.FC = () => {
     clearFilters
   } = useFilters(INVOICE_TASKS);
 
-  if (invoices.length === 0) {
-    return (
-      <EmptyState info='No invoices available!' testId='invoices-empty-state' />
-    );
-  }
-
   return (
     <div className={rootClassName}>
       <h3>Invoice</h3>
@@ -51,19 +44,25 @@ const Invoice: React.FC = () => {
       />
       <Box sx={{ p: 3 }}>
         <TableContainer component={Paper} variant='outlined'>
-          <Table size='small'>
-            <TableHead>
-              <TableRow>
-                {TABLE_CONFIG.map(({ colName, id }) => (
-                  <TableCell key={id}>
-                    <h4>{colName}</h4>
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {invoices.map((task) => {
-                return (
+          {invoices.length === 0 && (
+            <EmptyState
+              info='No invoices available!'
+              testId='invoices-empty-state'
+            />
+          )}
+          {invoices.length > 0 && (
+            <Table size='small'>
+              <TableHead>
+                <TableRow>
+                  {TABLE_CONFIG.map(({ colName, id }) => (
+                    <TableCell key={id}>
+                      <h4>{colName}</h4>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {invoices.map((task) => (
                   <TableRow key={task.id} data-testid='invoice-table-row'>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>
@@ -74,19 +73,13 @@ const Invoice: React.FC = () => {
                       <FileDownload />
                     </TableCell>
                   </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
       </Box>
-      <div
-        className={`${rootClassName}__amount`}
-        data-testid='invoice-total-amount'
-      >
-        <span className={`${rootClassName}__amountLabel`}>Amount Earned:</span>
-        1000 €
-      </div>
+      {invoices.length !== 0 && <AmountEarned />}
     </div>
   );
 };

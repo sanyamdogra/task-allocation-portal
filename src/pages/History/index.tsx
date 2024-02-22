@@ -33,15 +33,6 @@ const History: React.FC = () => {
     clearFilters
   } = useFilters(HISTORIC_TASKS);
 
-  if (historicTasks.length === 0) {
-    return (
-      <EmptyState
-        info='No historic tasks available!'
-        testId='history-empty-state'
-      />
-    );
-  }
-
   return (
     <div className={rootClassName}>
       <h3>History</h3>
@@ -54,19 +45,25 @@ const History: React.FC = () => {
       />
       <Box sx={{ p: 3 }}>
         <TableContainer component={Paper} variant='outlined'>
-          <Table size='small'>
-            <TableHead>
-              <TableRow>
-                {TABLE_CONFIG.map(({ colName, id }) => (
-                  <TableCell key={id}>
-                    <h4>{colName}</h4>
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {historicTasks.map((task) => {
-                return (
+          {historicTasks.length === 0 && (
+            <EmptyState
+              info='No historic tasks available!'
+              testId='history-empty-state'
+            />
+          )}
+          {historicTasks.length > 0 && (
+            <Table size='small'>
+              <TableHead>
+                <TableRow>
+                  {TABLE_CONFIG.map(({ colName, id }) => (
+                    <TableCell key={id}>
+                      <h4>{colName}</h4>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {historicTasks.map((task) => (
                   <TableRow key={task.id} data-testid='history-table-row'>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>{task.description}</TableCell>
@@ -83,10 +80,10 @@ const History: React.FC = () => {
                       </div>
                     </TableCell>
                   </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
       </Box>
     </div>

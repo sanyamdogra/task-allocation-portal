@@ -2,14 +2,12 @@
 @import '@styles/variables/colors';
 @import '@styles/variables/spacing';
 
-.task-allocation-invoice {
-  &__amount {
-    font-size: $font-xl;
-    font-weight: $bold;
-    float: right;
-    margin-right: 1.5rem;
-    color: $primary-accent;
-  }
+.invoice-amount-earned {
+  font-size: $font-xl;
+  font-weight: $bold;
+  float: right;
+  margin-right: 1.5rem;
+  color: $primary-accent;
 
   &__amountLabel {
     font-size: $font-normal;

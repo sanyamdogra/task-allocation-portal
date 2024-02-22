@@ -71,6 +71,5 @@ describe('Invoice Page', () => {
     expect(
       screen.queryByTestId('invoice-total-amount')
     ).not.toBeInTheDocument();
-    expect(screen.queryByTestId('clear-filters')).not.toBeInTheDocument();
   });
 });

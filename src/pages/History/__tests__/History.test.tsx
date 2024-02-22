@@ -57,8 +57,5 @@ describe('History Page', () => {
     render(<History />);
 
     expect(screen.getByTestId('history-empty-state')).toBeInTheDocument();
-
-    // Should not be in the document
-    expect(screen.queryByTestId('clear-filters')).not.toBeInTheDocument();
   });
 });
