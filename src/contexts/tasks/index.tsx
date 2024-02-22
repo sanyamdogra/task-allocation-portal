@@ -13,6 +13,9 @@ export interface TasksContextValue {
   moveToCompletedTasks: (task: Task) => void;
 }
 
+/**
+ * This is the context that available, in progress, and completed tasks in the app
+ */
 export const TasksContext = createContext<TasksContextValue>({
   availableTasks: [],
   inProgressTasks: [],

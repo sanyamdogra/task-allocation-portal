@@ -2,9 +2,9 @@ import { it, describe, expect, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as useFilterHooks from '@hooks/useFilters';
 
-import { HISTORIC_TASKS } from '../dummyData';
+import { INVOICE_TASKS } from '../dummyData';
 
-import History from '..';
+import Invoice from '..';
 
 const useFiltersSpy = vi.spyOn(useFilterHooks, 'useFilters');
 
@@ -17,18 +17,18 @@ const mockFilterReturnValue = {
   handleFilterYearChange: vi.fn()
 };
 
-describe('History Page', () => {
+describe('Invoice Page', () => {
   it('Should render defined number of rows according to the data provided', () => {
     useFiltersSpy.mockReturnValueOnce({
       ...mockFilterReturnValue,
-      records: HISTORIC_TASKS
+      records: INVOICE_TASKS
     });
 
-    render(<History />);
+    render(<Invoice />);
 
-    const tableRows = screen.getAllByTestId('history-table-row');
+    const tableRows = screen.getAllByTestId('invoice-table-row');
 
-    expect(tableRows.length).toBe(HISTORIC_TASKS.length);
+    expect(tableRows.length).toBe(INVOICE_TASKS.length);
   });
 
   it('calls clearFilters function when clear filter button is clicked', () => {
@@ -36,11 +36,11 @@ describe('History Page', () => {
 
     useFiltersSpy.mockReturnValueOnce({
       ...mockFilterReturnValue,
-      records: HISTORIC_TASKS,
+      records: INVOICE_TASKS,
       clearFilters: clearFiltersMock
     });
 
-    render(<History />);
+    render(<Invoice />);
 
     const clearFiltersButton = screen.getByTestId('clear-filters');
 
@@ -49,16 +49,28 @@ describe('History Page', () => {
     expect(clearFiltersMock).toHaveBeenCalled();
   });
 
-  it('should render correct components in the empty state', () => {
+  it('should render the total amount earned when invoices are present', () => {
     useFiltersSpy.mockReturnValueOnce({
-      ...mockFilterReturnValue
+      ...mockFilterReturnValue,
+      records: INVOICE_TASKS
     });
 
-    render(<History />);
+    render(<Invoice />);
 
-    expect(screen.getByTestId('history-empty-state')).toBeInTheDocument();
+    expect(screen.getByTestId('invoice-total-amount')).toBeInTheDocument();
+  });
+
+  it('should render proper components during empty state', () => {
+    useFiltersSpy.mockReturnValueOnce(mockFilterReturnValue);
+
+    render(<Invoice />);
+
+    expect(screen.getByTestId('invoices-empty-state')).toBeInTheDocument();
 
     // Should not be in the document
+    expect(
+      screen.queryByTestId('invoice-total-amount')
+    ).not.toBeInTheDocument();
     expect(screen.queryByTestId('clear-filters')).not.toBeInTheDocument();
   });
 });

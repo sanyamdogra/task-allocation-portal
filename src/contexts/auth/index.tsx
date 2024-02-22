@@ -6,6 +6,9 @@ export interface AuthContextValue {
   logOut: VoidFunction;
 }
 
+/**
+ * This is the context that deals with authentication of the app
+ */
 export const AuthContext = createContext<AuthContextValue>({
   authenticated: false,
   logIn: () => {},

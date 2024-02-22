@@ -13,11 +13,13 @@ import {
 import { FileDownload } from '@mui/icons-material';
 
 import Filters from '@components/Filters';
+import EmptyState from '@components/EmptyState';
 import { useFilters } from '@hooks/useFilters';
 
 import { TABLE_CONFIG } from './tableConfig';
-import './styles.scss';
 import { INVOICE_TASKS } from './dummyData';
+
+import './styles.scss';
 
 const rootClassName = 'task-allocation-invoice';
 
@@ -30,6 +32,12 @@ const Invoice: React.FC = () => {
     handleFilterMonthChange,
     clearFilters
   } = useFilters(INVOICE_TASKS);
+
+  if (invoices.length === 0) {
+    return (
+      <EmptyState info='No invoices available!' testId='invoices-empty-state' />
+    );
+  }
 
   return (
     <div className={rootClassName}>
@@ -56,7 +64,7 @@ const Invoice: React.FC = () => {
             <TableBody>
               {invoices.map((task) => {
                 return (
-                  <TableRow>
+                  <TableRow key={task.id} data-testid='invoice-table-row'>
                     <TableCell>{task.name}</TableCell>
                     <TableCell>
                       {task.month} {task.year}
@@ -72,7 +80,10 @@ const Invoice: React.FC = () => {
           </Table>
         </TableContainer>
       </Box>
-      <div className={`${rootClassName}__amount`}>
+      <div
+        className={`${rootClassName}__amount`}
+        data-testid='invoice-total-amount'
+      >
         <span className={`${rootClassName}__amountLabel`}>Amount Earned:</span>
         1000 €
       </div>

@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 
 import Filters from '@components/Filters';
+import EmptyState from '@components/EmptyState';
 import { useFilters } from '@hooks/useFilters';
 
 import { HISTORIC_TASKS } from './dummyData';
@@ -31,6 +32,15 @@ const History: React.FC = () => {
     handleFilterMonthChange,
     clearFilters
   } = useFilters(HISTORIC_TASKS);
+
+  if (historicTasks.length === 0) {
+    return (
+      <EmptyState
+        info='No historic tasks available!'
+        testId='history-empty-state'
+      />
+    );
+  }
 
   return (
     <div className={rootClassName}>
